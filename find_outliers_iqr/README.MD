@@ -11,7 +11,7 @@ Identifies outlier research works from two provided CSV datasets using the Inter
 
 - `-j` or `--journal_metrics`: Path to the CSV file containing journal metrics. (Required)
 - `-w` or `--works`: Path to the CSV file containing individual works details. (Required)
-- `-o` or `--output`: Path where the outliers CSV file will be saved. Default is `outliers.csv`.
+- `-o` or `--output`: Path where the outliers CSV file will be saved. Default is outliers.csv.
 
 ### Output:
 The script will produce a CSV file that lists the outlier works. The structure of this CSV will be similar to the `works` CSV file input.
