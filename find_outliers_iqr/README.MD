@@ -1,6 +1,5 @@
 ### Description:
-The script identifies outlier research works from two provided CSV datasets using the Interquartile Range (IQR) method, specifically on the 'Referenced by Count' metric. It then saves these outliers to a new CSV file. Outliers are determined differently based on the quartile of the journal in which the work is published.
-
+Identifies outlier research works from two provided CSV datasets using the Interquartile Range (IQR) method, specifically on the 'Referenced by Count' metric. It then saves these outliers to a new CSV file. Outliers are determined differently based on the quartile of the journal in which the work is published.
 
 
 ### How to Run:
