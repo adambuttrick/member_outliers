@@ -36,6 +36,17 @@ def extract_data_from_json(json_path):
     return extracted_data
 
 
+def deduplicate_data(data):
+    seen = set()
+    unique_data = []
+    for item in data:
+        tuple_item = tuple(item)
+        if tuple_item not in seen:
+            seen.add(tuple_item)
+            unique_data.append(item)
+    return unique_data
+
+
 def write_data_to_csv(data, csv_path):
     headers = ["Title", "Authors", "DOI", "Creation Date", "Related References (DOIs)",
                "Total Count of References", "Referenced by Count", "Journal Title", "Links", "Publication Date", "ISSN Details"]
@@ -61,7 +72,8 @@ def main():
     all_data = []
     for json_file in all_json_files:
         all_data.extend(extract_data_from_json(json_file))
-    write_data_to_csv(all_data, args.output_csv)
+    deduplicated_data = deduplicate_data(all_data)
+    write_data_to_csv(deduplicated_data, args.output_csv)
 
 
 if __name__ == "__main__":
