@@ -16,10 +16,12 @@ def extract_and_count_issn(headers, data):
     issn_counts = {}
     for row in data:
         issns = row[issn_index].strip()
+        if ";" in issns:
+            issns =  "; ".join(sorted(issns.split('; '))) 
         journal = row[journal_index]
         if issns:
             key = (issns, journal)
-            issn_counts[key] = issn_counts.get(key, 0) + 1  
+            issn_counts[key] = issn_counts.get(key, 0) + 1
     return issn_counts
 
 
@@ -32,9 +34,12 @@ def generate_csv(output_file, issn_counts):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Process a CSV to count ISSN occurrences.')
-    parser.add_argument('-i','--input_file', required=True, help='Path to the input CSV file.')
-    parser.add_argument('-o','--output_file', default='outliers_issn_counts.csv', help='Path to the output CSV file.')
+    parser = argparse.ArgumentParser(
+        description='Process a CSV to count ISSN occurrences.')
+    parser.add_argument('-i', '--input_file', required=True,
+                        help='Path to the input CSV file.')
+    parser.add_argument('-o', '--output_file', default='outliers_issn_counts.csv',
+                        help='Path to the output CSV file.')
     return parser.parse_args()
 
 
